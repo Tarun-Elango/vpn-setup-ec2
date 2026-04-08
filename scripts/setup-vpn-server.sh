@@ -4,7 +4,7 @@ set -e
 
 # ─────────────────────────────────────────────
 # WireGuard VPN Server Setup Script
-# Usage: sudo ./setup-vpn-server.sh <client_public_key>
+# Run on your AWS EC2 instance 
 # ─────────────────────────────────────────────
 
 if [ "$EUID" -ne 0 ]; then
