@@ -42,6 +42,7 @@ We will fill the rest of the client configuration in Step 4.
 ## Step 2: Set Up AWS EC2
 
 ### Create EC2 Instance
+- Region: Choose the region of your choice (e.g. `us-east-1` from console)
 - Instance type: Choose smallest available (e.g. `t2.nano`)
 - OS: Ubuntu Linux
 
