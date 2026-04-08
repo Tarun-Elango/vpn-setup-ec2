@@ -1,6 +1,6 @@
 # Setup your private VPN on AWS EC2
 
-I decided to watch 'Akira' its been in my watchlist for a while, i found out its available on Mubi, but Mubi mexico and Mubi Brazil. I dont live in either of those countries. The obvious solution was to subscribe to a VPN. But then I thought, why not show off my computer skills and set up my own VPN server on AWS EC2?. And create a blog post about it. So here we are, enjoy! 
+I decided to watch 'Akira' its been in my watchlist for a while, i found out its available on Mubi, but Mubi mexico and Mubi Brazil. I dont live in either of those countries. The obvious solution was to subscribe to a VPN. But then I thought, this is a perfect excuse to spin up a VPN server on AWS EC2. So here we are, enjoy! 
 
 Edit: i really enjoyed the movie, highly recommend it.
 
@@ -30,7 +30,10 @@ In this guide we're building our own personal VPN from scratch using:
 
 ## Step 1: Generate Client Keys
 
+Download the WireGuard client: https://www.wireguard.com/install/  ( desktop, ipad, iphone, etc. )
+
 On the client, create a private and public key pair. If you have the GUI, you can use WireGuard's built-in tools (generate keypair in the UI). Share the public key with the server out of band (email, text, etc). The private key should be kept secret and not shared with anyone.
+We will fill the rest of the client configuration in Step 4.
 
 > **Keep Track Of (for Step 3):** Keep the public key of the client handy.
 
@@ -65,7 +68,7 @@ Then launch the instance.
 1. On your local machine, create a folder and either clone `https://github.com/Tarun-Elango/vpn-setup-ec2` or copy `setup-vpn-server.sh`, from the repository, into it
 2. Place your `.pem`, which you downloaded from AWS, file in the same directory as `setup-vpn-server.sh`
 
-### Run the Setup Commands
+### Run the Setup Commands in your Terminal
 ```bash
 # Secure the .pem file
 chmod 400 <your-key.pem>
@@ -101,7 +104,7 @@ ssh -i <your-key.pem> ubuntu@<EC2-Public-DNS>
 
 ## Step 4: Configure Client
 
-Fill in the client configuration in your WireGuard client app with the following details:
+Fill in the client configuration, continuing from Step 1, in your WireGuard client app with the following details:
 
 **Interface Settings:**
 - Addresses: `10.0.0.2/24` — the client's VPN IP address assigned when connecting
